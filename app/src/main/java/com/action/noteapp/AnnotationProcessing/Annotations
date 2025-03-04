@@ -1,0 +1,92 @@
+The terms AnnotationProcessor, KAPT, and KSP are all related to annotation processing in Java and Kotlin,
+but they serve different purposes and have evolved over time to address specific needs in the development ecosystem.
+Here's a detailed explanation of each, their differences, and how they have changed:
+
+1. AnnotationProcessor
+
+
+What it is:
+->Annotation processors are tools used in Java to process annotations at compile time.
+
+->They are part of the Java Annotation Processing Tool (APT) and are used to generate code, validate code
+or perform other tasks based on annotations.
+
+
+How it works:
+->During compilation, the Java compiler (javac) scans the code for annotations
+and invokes the corresponding annotation processors.
+
+->Annotation processors can generate new source files, which are then compiled along with the original code.
+
+
+Use case:
+
+->Commonly used in libraries like Dagger, ButterKnife, and Room to generate boilerplate code.
+
+Limitations:
+
+Works only with Java sources.
+
+Does not natively support Kotlin.
+
+
+
+
+2. KAPT (Kotlin Annotation Processing Tool)
+What it is:
+
+->KAPT is a Kotlin plugin that enables the use of Java annotation processors in Kotlin projects.
+
+->It acts as a bridge between Kotlin and Java annotation processors.
+
+
+How it works:
+
+->KAPT generates Java stubs for Kotlin classes and methods that contain annotations.
+
+->These stubs are then processed by the Java annotation processors.
+
+->After processing, the generated code is compiled along with the Kotlin code.
+
+
+Use case:
+
+->Allows Kotlin projects to use Java-based annotation processors like Dagger, Room, and Glide.
+
+Limitations:
+
+->Slower than native Kotlin solutions because it generates intermediate Java stubs.
+
+->Does not fully leverage Kotlin's features (e.g., Kotlin-specific types and metadata).
+
+
+
+3. KSP (Kotlin Symbol Processing)
+What it is:
+
+->KSP is a modern, Kotlin-first annotation processing tool developed by Google.
+
+->It is designed to be faster and more efficient than KAPT, with native support for Kotlin.
+
+
+How it works:
+
+->KSP directly processes Kotlin code without generating intermediate Java stubs.
+
+->It provides a Kotlin-friendly API to analyze and generate code, leveraging Kotlin's type system and metadata.
+
+
+Use case:
+
+->Ideal for Kotlin projects that need to process annotations or generate code.
+
+->Libraries like Room and Moshi have started adopting KSP for better performance and Kotlin compatibility.
+
+
+Advantages over KAPT:
+
+->Faster: No need to generate Java stubs.
+
+->Kotlin-native: Works directly with Kotlin code and types.
+
+->More powerful: Provides better access to Kotlin-specific features (e.g., nullability, extension functions).
